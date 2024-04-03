@@ -11,6 +11,8 @@ class FeedViewController: UIViewController, UITableViewDataSource {
 
     // Add table view outlet
     @IBOutlet weak var tableView: UITableView!
+    
+    
 
     // Add property to store fetched movies array
     private var movies: [Movie] = []

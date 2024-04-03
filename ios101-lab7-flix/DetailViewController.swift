@@ -17,15 +17,40 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var releaseDateLabel: UILabel!
 
     // TODO: Add favorite button outlet
+    @IBOutlet weak var favoriteButton: UIButton!
 
     // TODO: Add favorite button action
-
+    @IBAction func didTapFavoriteButton(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            // 1.
+            movie.addToFavorites()
+        } else {
+            // 2.
+            movie.removeFromFavorites()
+        }
+    }
+    
     var movie: Movie!
 
     override func viewDidLoad() {
+        let favorites = Movie.getMovies(forKey: Movie.favoritesKey)
+        
         super.viewDidLoad()
+        
+        if favorites.contains(movie) {
+            // 3.
+            favoriteButton.isSelected = true
+        } else {
+            // 4.
+            favoriteButton.isSelected = false
+        }
+
 
         // TODO: Update favorite button selected state
+        favoriteButton.layer.cornerRadius = favoriteButton.frame.width / 2
+        
+        
 
 
 
